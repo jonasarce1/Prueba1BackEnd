@@ -7,7 +7,7 @@ const getLibros = async(_req:Request, res:Response) => {
         const libros = await LibroModel.find({}).exec(); //Esperamos a coger todos los libros de la base de datos
         res.status(200).json(libros); //Devolvemos los libros en formato json
     }catch(error){
-        res.status(500).send(error.message);
+        res.status(500).send(error.message); //status 500 es error del servidor, 400 es error del cliente, 200 es que todo ha ido bien, 404 es que no se ha encontrado
         return;
     }
 }

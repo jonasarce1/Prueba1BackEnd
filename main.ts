@@ -2,6 +2,7 @@ import express from "npm:express@4.18.2";
 import mongoose from "npm:mongoose@7.6.3";
 
 import getLibros from "./resolvers/getLibros.ts";
+import getLibroId from "./resolvers/getLibroId.ts";
 import addLibro from "./resolvers/addLibro.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
@@ -21,6 +22,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/api/libros", getLibros);
+app.get("/api/libroid/:id", getLibroId);
 app.post("/api/libros", addLibro);
 
 app.listen(3000, () => console.log("Servidor activo en puerto 3000"));
