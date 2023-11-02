@@ -13,7 +13,7 @@ const addLibro = async(req:Request, res:Response) => {
         const yaExiste = await LibroModel.findOne({isbn}).exec(); //Comprobamos si ya existe un libro con ese isbn
 
         if(yaExiste){
-            res.status(400).send("Faltan datos");
+            res.status(400).send("Ya existe el libro");
             return;
         }
 
