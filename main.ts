@@ -1,6 +1,8 @@
 //@ts-ignore //Para evitar que salga rojo lo del express
-import express, {Request, Response} from "npm:express@4.18.2";
+import express from "npm:express@4.18.2";
 import mongoose from "npm:mongoose@7.6.3";
+
+import getLibros from "./resolvers/getLibros.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 const env = await load();
@@ -17,3 +19,7 @@ await mongoose.connect(MONGO_URL);
 const app = express();
 
 app.use(express.json());
+
+app.get("/api/libros", getLibros);
+
+
