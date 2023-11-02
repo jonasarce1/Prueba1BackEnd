@@ -5,6 +5,10 @@ import LibroModel from "../db/libro.ts"
 const getLibroIsbn = async(req:Request, res:Response) => {
     try{
         const isbn = req.params.isbn;
+        if(!isbn){
+            res.status(400).send("Falta el isbn");
+            return;
+        }
         const libro = await LibroModel.findOne({isbn}).exec();
         if(!libro){
             res.status(404).send("No existe ningun libro con ese isbn");
