@@ -5,7 +5,7 @@ import LibroModel from "../db/libro.ts"
 const putLibro = async(req:Request, res:Response) => {
     try{
         const id = req.params.id;
-        const {titulo, autor, isbn} = req.params.body;
+        const {titulo, autor, isbn} = req.body;
         
         if(!id){
             res.status(400).send("Falta el id del libro");
